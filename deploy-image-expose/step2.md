@@ -1,17 +1,16 @@
-# Install K3S
+ # Add the K3S cluster in to Rancher
 
-The following will download and install Rancher's K3S onto the Master Server.  K3s is Ranchers lightweight Kubernetes server and will be installed with all roles installed (etcd, controller and worker).  For more information on K3S - please click here https://https://k3s.io/
+Now we need to import our K3S Kubernetes environment into Rancher.  For this we will go back to our Rancher server's web page and login using the credentials you created before.
 
-* Download and install k3s on the Master Server
-`curl -sfL https://get.k3s.io | sh -`{{execute HOST1}}
-
-For your convenience, the following command will wait until the node shows up as `Ready`:
-
-`until k3s kubectl get node 2>/dev/null | grep master | grep -q ' Ready'; do sleep 1; done; k3s kubectl get node`{{execute HOST1}}
-
-As soon as it shows `master` with status `Ready`, you have built your single host cluster!
-
+In the Rancher UI:
 ```
-NAME     STATUS   ROLES    AGE   VERSION
-master   Ready    <none>   0s    v1.xx.xx
+Click "Add Cluster".
+
+Click "Import existing cluster" and give it a name (this can be any name you like) and click create
+
+Copy the kubectl command at the bottom of the page and paste it into the Master Server via the Katacoda webpage on the Master Server,
+
+Once that has been copied and pasted - you can go back to your Rancher Server and click "Done".
 ```
+
+That is it - you have now deployed a Rancher Server, installed K3S and imported it into Rancher.  Now we will deploy some workloads to show how to start managing your Kubernetes environment.
